@@ -1,0 +1,23 @@
+* Compiling Emacs 29.1 on RHEL 8
+
+Download emacs from the "nearby GNU mirror" link on this site: https://www.gnu.org/software/emacs/download.html
+
+Expand the tarball somewhere:
+=tar xvf emacs-29.1.tar.xz=
+
+Install pre-requisite libraries that I like to use with emacs:
+=yum install libgccjit-devel jansson-devel ImageMagick-devel libtree-sitter-devel=
+
+Uninstall my old local emacs build:
+#+BEGIN_SRC sh
+cd src/emacs-28.1
+	make uninstall
+#+END_SRC
+
+Configure and build emacs to be installed into my home directory directly.  I like to have $HOME/bin, $HOME/lib, etc.
+#+BEGIN_SRC sh
+$ ./configure --prefix=$HOME --with-native-compilation=yes -with-x  --with-tree-sitter --with-json --with-imagemagick --with-gif=ifavailable 
+	$ make -j 8 && make install
+#+END_SRC
+
+
