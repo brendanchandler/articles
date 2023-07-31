@@ -1,4 +1,5 @@
 * Compiling Emacs 29.1 on RHEL 8
+<2023-07-31 Mon> Brendan Chandler
 
 Download emacs from the "nearby GNU mirror" link on this site: https://www.gnu.org/software/emacs/download.html
 
