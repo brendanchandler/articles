@@ -1,0 +1,51 @@
+* Epics Alarms
+<2023-07-07 Fri> Brendan Chandler
+
+Many epics records have alarm fields which cause the record to go into
+an "alarm" mode when the record's value exceeds some threshold.
+Different records can have different alarm fields.
+
+For ai, ao, longin, longout, and calc; these fields set values for when the alarm is triggered:
+- HIHI
+- HIGH
+- LOW
+- LOLO
+[[https://epics.anl.gov/base/R7-0/4-docs/calcRecord.html]]
+
+These fields determine how severe the alarm is, when one of the above is triggered:
+- HHSV (matches HIHI)
+- HSV  (matches HIGH)
+- LSV  (matches LOW)
+- LLSV (matches LOLO)
+  
+They can be values such as NO_ALARM, MINOR, or MAJOR.
+
+A minor alarm might typically show up as yellow, where a major alarm
+might show up as red.  To set alarms in an MEDM screen, configure a UI
+element's "color mode" to be set to "alarm"
+[[./images/medm-alarm-example.png]]
+
+In the example above, the box will be green normally, but turn yellow
+for a MINOR alarm and red for a MAJOR alarm.
+
+The database record might look like this:
+
+#+BEGIN_EXAMPLE
+record(calc, "$(P):CapOT_M") {
+	field(INPA, "$(P):FaultsStatusM")
+	field(CALC, "(A >> 1) & 1")
+	field(FLNK, "$(P):HeatSinkOT_M")
+	field(HIHI, "0.5")
+	field(HHSV, "MAJOR")
+}
+#+END_EXAMPLE
+
+In this case, the alarm would go off for any value over 0.5 and it
+would be a MAJOR alarm.  For the MEDM screen, the box will be green
+for a value of 0, and turn red for a value of 1.
+
+Note also, that if you have a BI or BO record, the fields change:
+- ZSV -- alarm severity if value is 0 (NO_ALARM, MINOR, MAJOR)
+- OSV -- alarm severity if value is 1
+[[https://epics.anl.gov/base/R7-0/4-docs/boRecord.html]]
+  
