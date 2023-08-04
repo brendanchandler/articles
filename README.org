@@ -1,4 +1,4 @@
-This is a list of small articles related to stuff I find interesting.
+This is a list of small articles related to stuff I work with or find interesting.
 
   
 - [[2023/compile-emacs-29-1.org][Compiling Emacs 29.1 on RHEL 8]]
