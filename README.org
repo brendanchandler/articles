@@ -1,5 +1,5 @@
 This is a list of small articles related to stuff I work with or find interesting.
 
-  
+- [[file:2023/git-submodules.org::*Git Submodules][Git Submodules]]  
 - [[2023/compile-emacs-29-1.org][Compiling Emacs 29.1 on RHEL 8]]
 - [[2023/epics-alarms.org][Epics Alarms]]

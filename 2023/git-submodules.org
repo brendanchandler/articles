@@ -1,0 +1,20 @@
+* Git Submodules
+Brendan Chandler <2023-08-14 Mon>
+
+Here are the steps[fn:1] for adding a submodule to a git repository:
+1. git submodule add URL
+
+Here are the steps for cloning a submodule:
+1. git clone URL
+2. (observe any submodules appear as empty directories)
+3. git submodule init # initializes local config file
+4. got submodule update # fetch data
+
+Alternatively,
+1. git clone URL --recurse-submodules
+
+
+
+* Footnotes
+
+[fn:1] https://git-scm.com/book/en/v2/Git-Tools-Submodules 
